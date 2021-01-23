@@ -6,6 +6,33 @@
 
 CLI/Web interface tool for the control of all the keys
 
+
+Login into server
+
+keys login server-address identonym login-key
+
+e.g.
+
+keys login plurid.com myIdentonym myKey
+
+
+List registered data
+
+keys list servers
+keys list groups
+keys list services
+
+keys get group <group-name> --group-key <value>
+keys get service <service-name> --group <value> --group-key <value>
+
+keys generate group <group-name> <group-key>
+
+keys assign <group-name> <service-name> --group-key <value>
+keys deassign <group-name> <service-name> --group-key <value>
+
+
+
+
 Stores the keys for various web services
 
 keys store --name google --type webservice --address google.com \
