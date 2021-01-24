@@ -38,7 +38,8 @@ const main = async (
         .command('status')
         .description('show the connection status')
         .action(async () => {
-            await status();
+            console.log('status');
+            // await status();
         });
 
 
@@ -58,11 +59,12 @@ const main = async (
             'key',
         )
         .action(async (options: any) => {
-            await login(
-                options.server,
-                options.identonym,
-                options.key,
-            );
+            console.log(options);
+            // await login(
+            //     options.server,
+            //     options.identonym,
+            //     options.key,
+            // );
         });
 
 
@@ -78,10 +80,61 @@ const main = async (
         )
         .description('log out of a keys server, default or specified')
         .action(async (options: any) => {
-            await logout(
-                options.server,
-                options.identonym,
-            );
+            console.log(options);
+            // await logout(
+            //     options.server,
+            //     options.identonym,
+            // );
+        });
+
+
+    program
+        .command('store <name>')
+        .option(
+            '-t, --type <type>',
+            'type',
+            'webservice',
+        )
+        .option(
+            '-a, --address <address>',
+            'address',
+        )
+        .option(
+            '--key-kind <key-kind>',
+            'key-kind',
+            'key',
+        )
+        .option(
+            '-k, --key-value <key-value>',
+            'key-value',
+        )
+        .option(
+            '--id-kind <id-kind>',
+            'id-kind',
+            'identonym',
+        )
+        .option(
+            '-i, --id-value <id-value>',
+            'id-value',
+        )
+        .option(
+            '-g, --group <group>',
+            'group',
+        )
+        .option(
+            '--group-key <group-key>',
+            'group-key',
+        )
+        .option(
+            '--server <server>',
+            'server',
+        )
+        .description('store a key for a service')
+        .action(async (
+            name,
+            options: any,
+        ) => {
+            console.log(name, options);
         });
 
 
@@ -92,7 +145,7 @@ const main = async (
             type,
             options: any,
         ) => {
-
+            console.log(type, options);
         });
 
 
@@ -108,7 +161,7 @@ const main = async (
             service,
             options: any,
         ) => {
-
+            console.log(group, service, options);
         });
 
 
@@ -124,7 +177,27 @@ const main = async (
             service,
             options: any,
         ) => {
+            console.log(group, service, options);
+        });
 
+
+    program
+        .command('refresh <name>')
+        .option(
+            '-s, --show',
+            'show new value',
+        )
+        .option(
+            '-v, --value <value>',
+            'new value, by default it generates a random value',
+        )
+        .description('refresh the key for a service')
+        .action(async (
+            group,
+            service,
+            options: any,
+        ) => {
+            console.log(group, service, options);
         });
 
 
