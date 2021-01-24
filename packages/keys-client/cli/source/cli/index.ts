@@ -193,11 +193,26 @@ const main = async (
         )
         .description('refresh the key for a service')
         .action(async (
-            group,
-            service,
+            name,
             options: any,
         ) => {
-            console.log(group, service, options);
+            console.log(name, options);
+        });
+
+
+    program
+        .command('refresher <name> [path]')
+        .option(
+            '-d, --default [value]',
+            'check for the default refresher script on the service\'s address, or in another location',
+        )
+        .description('set refresher script for service')
+        .action(async (
+            name,
+            path,
+            options: any,
+        ) => {
+            console.log(name, path, options);
         });
 
 
