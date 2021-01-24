@@ -1,0 +1,5 @@
+#!/usr/bin/env node
+
+const keys = require('../distribution/index.js');
+
+keys.cli();
