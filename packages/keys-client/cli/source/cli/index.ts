@@ -85,6 +85,49 @@ const main = async (
         });
 
 
+    program
+        .command('list <type>')
+        .description('list values for a certain "type", or for "all"')
+        .action(async (
+            type,
+            options: any,
+        ) => {
+
+        });
+
+
+    program
+        .command('assign <group> <service>')
+        .option(
+            '-k, --group-key <value>',
+            'group key value',
+        )
+        .description('assign service to group')
+        .action(async (
+            group,
+            service,
+            options: any,
+        ) => {
+
+        });
+
+
+    program
+        .command('deassign <group> <service>')
+        .option(
+            '-k, --group-key <value>',
+            'group key value',
+        )
+        .description('deassign service from group')
+        .action(async (
+            group,
+            service,
+            options: any,
+        ) => {
+
+        });
+
+
     program.parseAsync(process.argv);
 }
 

@@ -15,28 +15,28 @@ const logout = async (
     server?: string,
     identonym?: string,
 ) => {
-    const configuration = await getConfiguration(
-        server,
-        identonym,
-    );
+    // const configuration = await getConfiguration(
+    //     server,
+    //     identonym,
+    // );
 
-    if (!configuration) {
-        return;
-    }
+    // if (!configuration) {
+    //     return;
+    // }
 
-    if (!configuration.server) {
-        console.log(`Not logged into a keys server.`);
-        return;
-    }
+    // if (!configuration.server) {
+    //     console.log(`Not logged into a keys server.`);
+    //     return;
+    // }
 
-    await removeConfiguration(
-        configuration.server,
-        configuration.identonym,
-    );
+    // await removeConfiguration(
+    //     configuration.server,
+    //     configuration.identonym,
+    // );
 
-    const serverName = extractServerName(configuration.server);
+    // const serverName = extractServerName(configuration.server);
 
-    console.log(`Logged out identonym '${configuration.identonym}' from the keys server '${serverName}'.`);
+    // console.log(`Logged out identonym '${configuration.identonym}' from the keys server '${serverName}'.`);
 }
 // #endregion module
 

@@ -29,78 +29,78 @@ const client = (
     uri: string,
     cookie?: string,
 ) => {
-    const httpLink = new HttpLink({
-        uri,
-        credentials: 'include',
-        fetch,
-        headers: {
-            Cookie: cookie,
-        },
-    });
+    // const httpLink = new HttpLink({
+    //     uri,
+    //     credentials: 'include',
+    //     fetch,
+    //     headers: {
+    //         Cookie: cookie,
+    //     },
+    // });
 
-    const afterwareLink = new ApolloLink(
-        (
-            operation,
-            forward,
-        ) => forward(operation).map((response) => {
-            const context = operation.getContext();
+    // const afterwareLink = new ApolloLink(
+    //     (
+    //         operation,
+    //         forward,
+    //     ) => forward(operation).map((response) => {
+    //         const context = operation.getContext();
 
-            const {
-                response: {
-                    url,
-                    headers,
-                },
-            } = context;
+    //         const {
+    //             response: {
+    //                 url,
+    //                 headers,
+    //             },
+    //         } = context;
 
-            if (!headers) {
-                return response;
-            }
+    //         if (!headers) {
+    //             return response;
+    //         }
 
-            const cookie = headers.get('set-cookie');
-            if (!cookie) {
-                return response;
-            }
+    //         const cookie = headers.get('set-cookie');
+    //         if (!cookie) {
+    //             return response;
+    //         }
 
-            const {
-                variables,
-            } = operation;
+    //         const {
+    //             variables,
+    //         } = operation;
 
-            const identonym = variables.input.identonym;
+    //         const identonym = variables.input.identonym;
 
-            const split = cookie.split(';');
-            const privateToken = split[0];
-            if (!privateToken) {
-                return response;
-            }
+    //         const split = cookie.split(';');
+    //         const privateToken = split[0];
+    //         if (!privateToken) {
+    //             return response;
+    //         }
 
-            const privateTokenValue = privateToken.replace(KEYS_COOKIE + '=', '');
-            if (!privateTokenValue) {
-                return response;
-            }
+    //         const privateTokenValue = privateToken.replace(KEYS_COOKIE + '=', '');
+    //         if (!privateTokenValue) {
+    //             return response;
+    //         }
 
-            const data = {
-                token: privateTokenValue,
-                server: url,
-                identonym,
-            };
+    //         const data = {
+    //             token: privateTokenValue,
+    //             server: url,
+    //             identonym,
+    //         };
 
-            updateConfiguration(
-                url,
-                identonym,
-                data,
-            );
+    //         updateConfiguration(
+    //             url,
+    //             identonym,
+    //             data,
+    //         );
 
-            return response;
-        })
-    );
+    //         return response;
+    //     })
+    // );
 
-    return new ApolloClient({
-        link: from([
-            afterwareLink,
-            httpLink,
-        ]),
-        cache: new InMemoryCache(),
-    });
+    // return new ApolloClient({
+    //     link: from([
+    //         afterwareLink,
+    //         httpLink,
+    //     ]),
+    //     cache: new InMemoryCache(),
+    // });
 };
 // #endregion module
 

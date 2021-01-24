@@ -1,8 +1,8 @@
 // #region imports
     // #region external
-    import {
-        DELOG_COOKIE,
-    } from '../../../data/constants';
+    // import {
+    //     KEYS_COOKIE,
+    // } from '../../../data/constants';
 
     import {
         client,
@@ -17,14 +17,15 @@
 
 
 // #region module
-const delogCookieFromToken = (
+const keysCookieFromToken = (
     token: string,
 ) => {
-    return DELOG_COOKIE + '=' + token;
+    // return DELOG_COOKIE + '=' + token;
+    return token;
 }
 
 
-const getDelog = async (
+const getKeys = async (
     server?: string,
     identonym?: string,
 ) => {
@@ -35,7 +36,7 @@ const getDelog = async (
 
     if (!configuration) {
         return {
-            delog: undefined,
+            keys: undefined,
             configuration: undefined,
         };
     }
@@ -46,20 +47,20 @@ const getDelog = async (
 
     if (!token || !configuration.server) {
         return {
-            delog: undefined,
+            keys: undefined,
             configuration: undefined,
         };
     }
 
-    const cookie = delogCookieFromToken(token);
+    const cookie = keysCookieFromToken(token);
 
-    const delog = client(
+    const keys = client(
         configuration.server,
         cookie,
     );
 
     return {
-        delog,
+        keys,
         configuration,
     };
 }
@@ -69,7 +70,7 @@ const getDelog = async (
 
 // #region exports
 export {
-    delogCookieFromToken,
-    getDelog,
+    keysCookieFromToken,
+    getKeys,
 };
 // #endregion exports

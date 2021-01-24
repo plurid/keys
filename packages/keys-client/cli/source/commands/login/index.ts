@@ -1,12 +1,12 @@
 // #region imports
     // #region external
-    import {
-        Configuration,
-    } from '../../data/interfaces';
+    // import {
+    //     Configuration,
+    // } from '../../data/interfaces';
 
-    import {
-        defaultConfiguration,
-    } from '../../data/constants';
+    // import {
+    //     defaultConfiguration,
+    // } from '../../data/constants';
 
     import client from '../../services/graphql/client';
     import {
@@ -29,53 +29,53 @@ const login = async (
     identonym: string,
     key: string,
 ) => {
-    const keys = client(
-        server,
-    );
+    // const keys = client(
+    //     server,
+    // );
 
-    const serverName = extractServerName(server);
+    // const serverName = extractServerName(server);
 
-    const data: Configuration = {
-        ...defaultConfiguration,
-        server,
-        identonym,
-        key,
-    };
+    // const data: Configuration = {
+    //     ...defaultConfiguration,
+    //     server,
+    //     identonym,
+    //     key,
+    // };
 
-    try {
-        const mutation = await keys.mutate({
-            mutation: LOGIN,
-            variables: {
-                input: {
-                    identonym,
-                    key,
-                },
-            },
-        });
+    // try {
+    //     const mutation = await keys.mutate({
+    //         mutation: LOGIN,
+    //         variables: {
+    //             input: {
+    //                 identonym,
+    //                 key,
+    //             },
+    //         },
+    //     });
 
-        const response = mutation.data.login;
+    //     const response = mutation.data.login;
 
-        if (!response.status) {
-            console.log(`Could not log in into the keys server '${serverName}' as '${identonym}'.`);
-            return;
-        }
+    //     if (!response.status) {
+    //         console.log(`Could not log in into the keys server '${serverName}' as '${identonym}'.`);
+    //         return;
+    //     }
 
-        // HACK
-        // to allow the token writing inside the apollo afterwareLink
-        setTimeout(async () => {
-            delete (data as any).token;
+    //     // HACK
+    //     // to allow the token writing inside the apollo afterwareLink
+    //     setTimeout(async () => {
+    //         delete (data as any).token;
 
-            await updateConfiguration(
-                server,
-                identonym,
-                data,
-            );
-        }, 2_000);
+    //         await updateConfiguration(
+    //             server,
+    //             identonym,
+    //             data,
+    //         );
+    //     }, 2_000);
 
-        console.log(`Logged in the keys server '${serverName}' as '${identonym}'.`);
-    } catch (error) {
-        console.log(`Could not log in into the keys server '${serverName}' as '${identonym}'.`);
-    }
+    //     console.log(`Logged in the keys server '${serverName}' as '${identonym}'.`);
+    // } catch (error) {
+    //     console.log(`Could not log in into the keys server '${serverName}' as '${identonym}'.`);
+    // }
 }
 // #endregion module
 
