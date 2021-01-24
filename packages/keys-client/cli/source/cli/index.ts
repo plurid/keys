@@ -11,6 +11,7 @@
         status,
         login,
         logout,
+        refresher,
     } from '../commands';
     // #endregion external
 // #endregion imports
@@ -212,7 +213,11 @@ const main = async (
             path,
             options: any,
         ) => {
-            console.log(name, path, options);
+            refresher(
+                name,
+                path,
+                options,
+            );
         });
 
 
