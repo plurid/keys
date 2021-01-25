@@ -30,14 +30,54 @@ const refresher = async (
     };
 
     const refresherScript = `
-        const refresher = () => {
-            console.log('outerData', keysData);
-            return keysData;
-            // return true;
+        const graphqlEndpoint = 'https://rickandmortyapi.com/graphql';
+
+        const client = new Apollo.ApolloClient({
+            link: Apollo.createHttpLink({
+                uri: graphqlEndpoint,
+                credentials: 'include',
+                fetch,
+            }),
+            cache: new Apollo.InMemoryCache(),
+        });
+
+        const querier = async () => {
+            const query = await client.query({
+                query: Apollo.gql\`
+                    query {
+                        characters(page: 2, filter: { name: "rick" }) {
+                            info {
+                                count
+                            }
+                            results {
+                                name
+                            }
+                        }
+                        location(id: 1) {
+                            id
+                        }
+                        episodesByIds(ids: [1, 2]) {
+                            id
+                        }
+                    }
+                \`,
+            });
+
+            return query;
         }
 
-        const result = refresher();
+        const result = querier();
         result;
+
+
+        // const refresher = () => {
+        //     console.log('outerData', keysData);
+        //     return keysData;
+        //     // return true;
+        // }
+
+        // const result = refresher();
+        // result;
     `;
 
     // verify script hash

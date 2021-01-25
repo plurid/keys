@@ -4,6 +4,8 @@
 
     import http from 'http';
 
+    import fetch from 'cross-fetch';
+
     import * as Apollo from '@apollo/client';
     // #endregion libraries
 // #endregion imports
@@ -14,6 +16,7 @@
 const baseSandbox = {
     http,
     Apollo,
+    fetch,
 };
 
 const vmRunner = (
@@ -27,7 +30,8 @@ const vmRunner = (
             ...baseSandbox,
         },
         {
-            timeout: 30,
+            // in ms
+            timeout: 30_000,
             // https://nodejs.org/api/vm.html#vm_timeout_interactions_with_asynchronous_tasks_and_promises
             microtaskMode: 'afterEvaluate',
         },
