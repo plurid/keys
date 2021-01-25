@@ -33,7 +33,7 @@ const vmRunner = (
             // in ms
             timeout: 30_000,
             // https://nodejs.org/api/vm.html#vm_timeout_interactions_with_asynchronous_tasks_and_promises
-            microtaskMode: 'afterEvaluate',
+            // microtaskMode: 'afterEvaluate',
         },
     );
 
