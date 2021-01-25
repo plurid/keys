@@ -3,6 +3,8 @@
     import vm from 'vm';
 
     import http from 'http';
+
+    import Apollo from '@apollo/client';
     // #endregion libraries
 // #endregion imports
 
@@ -11,6 +13,7 @@
 // #region module
 const baseSandbox = {
     http,
+    Apollo,
 };
 
 const vmRunner = (
