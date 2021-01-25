@@ -4,7 +4,7 @@
 
     import http from 'http';
 
-    import Apollo from '@apollo/client';
+    import * as Apollo from '@apollo/client';
     // #endregion libraries
 // #endregion imports
 
