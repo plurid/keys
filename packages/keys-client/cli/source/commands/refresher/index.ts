@@ -1,6 +1,10 @@
 // #region imports
     // #region libraries
     import vm from 'vm';
+
+    import {
+        sha512,
+    } from 'js-sha512';
     // #endregion libraries
 // #endregion imports
 
@@ -31,11 +35,16 @@ const refresher = async (
         result;
     `;
 
+    const hash = sha512(refresherScript);
+    // verify hash
+
+    const sandbox = {
+        keysData,
+    };
+
     const obj = vm.runInNewContext(
         refresherScript,
-        {
-            keysData,
-        },
+        sandbox,
         {
             timeout: 30,
         },
