@@ -6,6 +6,11 @@
         sha512,
     } from 'js-sha512';
     // #endregion libraries
+
+
+    // #region external
+    import vmRunner from '../../services/vmRunner';
+    // #endregion external
 // #endregion imports
 
 
@@ -35,19 +40,16 @@ const refresher = async (
         result;
     `;
 
+    // verify script hash
     const hash = sha512(refresherScript);
-    // verify hash
 
     const sandbox = {
         keysData,
     };
 
-    const obj = vm.runInNewContext(
+    const obj = vmRunner(
         refresherScript,
         sandbox,
-        {
-            timeout: 30,
-        },
     );
     console.log(obj);
 }
