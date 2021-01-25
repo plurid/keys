@@ -63,7 +63,10 @@ const refresher = async (
                 \`,
             });
 
-            return query;
+            return {
+                keysData,
+                query,
+            };
         }
 
         const result = querier();
@@ -87,7 +90,7 @@ const refresher = async (
         keysData,
     };
 
-    const obj = vmRunner(
+    const obj = await vmRunner(
         refresherScript,
         sandbox,
     );
