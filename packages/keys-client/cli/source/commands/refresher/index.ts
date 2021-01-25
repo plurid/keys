@@ -12,6 +12,8 @@ const refresher = async (
     path: any,
     options: any,
 ) => {
+    // the refresher checks if the script sha equals before registration
+
     console.log(name, path, options);
 
     const keysData = {
