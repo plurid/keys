@@ -1,5 +1,7 @@
 <p align="center">
-    <img src="https://raw.githubusercontent.com/plurid/keys/master/about/identity/keys-logo.png" height="250px">
+    <a target="_blank" href="https://keys.plurid.cloud">
+        <img src="https://raw.githubusercontent.com/plurid/keys/master/about/identity/keys-logo.png" height="250px">
+    </a>
     <br />
     <br />
     <a target="_blank" href="https://github.com/plurid/keys/blob/master/LICENSE">
